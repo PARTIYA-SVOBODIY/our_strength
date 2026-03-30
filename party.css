@@ -1,0 +1,764 @@
+/* Сайт политической партии «СВОБОДА» */
+:root {
+    --party-navy: #0d1b2a;
+    --party-blue: #1b3a5f;
+    --party-accent: #c9a227;
+    --party-gold-light: #e8d48a;
+    --party-bg: #f5f6f8;
+    --party-card: #ffffff;
+    --party-text: #1a1a1a;
+    --party-muted: #5c6570;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "Segoe UI", system-ui, -apple-system, sans-serif;
+    font-size: 1.075rem;
+    line-height: 1.65;
+    color: var(--party-text);
+    min-height: 100vh;
+    background-color: #e8edf5;
+    background-image:
+        radial-gradient(ellipse 110% 85% at 50% -15%, rgba(27, 58, 95, 0.18), transparent 52%),
+        radial-gradient(ellipse 90% 70% at 105% 35%, rgba(201, 162, 39, 0.12), transparent 48%),
+        radial-gradient(ellipse 75% 60% at -5% 75%, rgba(13, 27, 42, 0.1), transparent 50%),
+        linear-gradient(
+            168deg,
+            #f4f6fb 0%,
+            #e9eef6 28%,
+            #e2e9f3 52%,
+            #dbe4f0 78%,
+            #d3deec 100%
+        );
+    background-attachment: fixed;
+}
+
+.party-shell {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 1.25rem 3rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Верхняя панель переключения страниц */
+.party-switch {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: linear-gradient(180deg, var(--party-navy) 0%, var(--party-blue) 100%);
+    margin: 0 -1.25rem 2rem;
+    padding: 1rem 1.25rem 1.25rem;
+    box-shadow: 0 4px 24px rgba(13, 27, 42, 0.35);
+}
+
+.party-switch-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.75rem;
+    text-align: center;
+}
+
+.party-brand {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.75rem;
+    color: #fff;
+    text-decoration: none;
+    flex-wrap: wrap;
+    transition:
+        transform 0.3s cubic-bezier(0.34, 1.45, 0.64, 1),
+        filter 0.25s ease;
+}
+
+.party-brand:hover {
+    transform: scale(1.04);
+    filter: brightness(1.08);
+}
+
+.party-brand:active {
+    transform: scale(0.98);
+    transition-duration: 0.1s;
+}
+
+.party-brand-mark {
+    min-width: 42px;
+    height: 42px;
+    padding: 0 6px;
+    border-radius: 8px;
+    background: linear-gradient(135deg, var(--party-accent), var(--party-gold-light));
+    display: grid;
+    place-items: center;
+    font-weight: 800;
+    font-size: 1.1rem;
+    color: var(--party-navy);
+}
+
+.party-brand-text strong {
+    display: block;
+    font-size: 1.12rem;
+    letter-spacing: 0.02em;
+}
+
+.party-brand-text span {
+    font-size: 0.88rem;
+    opacity: 0.85;
+}
+
+.party-tabs {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    justify-content: center;
+}
+
+.party-tabs a {
+    flex: 1 1 auto;
+    min-width: 140px;
+    text-align: center;
+    padding: 0.65rem 1rem;
+    border-radius: 8px;
+    font-size: 0.98rem;
+    font-weight: 600;
+    color: rgba(255, 255, 255, 0.88);
+    text-decoration: none;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    background: rgba(255, 255, 255, 0.06);
+    transition:
+        background 0.28s ease,
+        color 0.28s ease,
+        border-color 0.28s ease,
+        transform 0.32s cubic-bezier(0.34, 1.45, 0.64, 1),
+        box-shadow 0.32s ease;
+}
+
+.party-tabs a:hover {
+    background: rgba(255, 255, 255, 0.14);
+    border-color: rgba(255, 255, 255, 0.35);
+    transform: translateY(-4px) scale(1.03);
+    box-shadow: 0 10px 26px rgba(0, 0, 0, 0.28);
+}
+
+.party-tabs a:active {
+    transform: translateY(-1px) scale(0.99);
+    transition-duration: 0.12s;
+}
+
+.party-tabs a.is-active {
+    background: var(--party-accent);
+    color: var(--party-navy);
+    border-color: var(--party-gold-light);
+    box-shadow: 0 2px 12px rgba(201, 162, 39, 0.45);
+}
+
+.party-tabs a.is-active:hover {
+    transform: translateY(-4px) scale(1.03);
+    box-shadow: 0 12px 32px rgba(201, 162, 39, 0.55);
+    filter: brightness(1.06);
+}
+
+/* Контент */
+.party-page-title {
+    font-size: clamp(1.85rem, 4.2vw, 2.45rem);
+    color: var(--party-navy);
+    margin-bottom: 0.35rem;
+    font-weight: 700;
+    text-align: center;
+    width: 100%;
+}
+
+.party-lead {
+    color: var(--party-muted);
+    margin-bottom: 2rem;
+    max-width: 52rem;
+    text-align: center;
+    width: 100%;
+}
+
+.party-card-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 1.25rem;
+    width: 100%;
+    justify-content: center;
+    justify-items: stretch;
+}
+
+.party-card {
+    background: linear-gradient(165deg, #ffffff 0%, #f8fafc 55%, #f0f4fa 100%);
+    border-radius: 12px;
+    padding: 1.5rem;
+    box-shadow:
+        0 4px 20px rgba(13, 27, 42, 0.08),
+        inset 0 1px 0 rgba(255, 255, 255, 0.85);
+    border: none;
+}
+
+.party-card h3 {
+    color: var(--party-blue);
+    font-size: 1.2rem;
+    margin-bottom: 0.25rem;
+}
+
+.party-role {
+    font-size: 0.9rem;
+    color: var(--party-accent);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    margin-bottom: 0.75rem;
+}
+
+.party-card p {
+    color: var(--party-muted);
+    font-size: 1.02rem;
+    text-align: center;
+}
+
+.party-card h3,
+.party-card .party-role {
+    text-align: center;
+}
+
+/* Руководство: фото + фамилия; должность и текст при наведении / фокусе */
+.party-sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+}
+
+.party-card-grid--leadership {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+@media (max-width: 900px) {
+    .party-card-grid--leadership {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+@media (max-width: 520px) {
+    .party-card-grid--leadership {
+        grid-template-columns: 1fr;
+    }
+}
+
+.party-card--leadership {
+    position: relative;
+    padding: 0;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    border-radius: 14px;
+    border: none;
+    background: linear-gradient(175deg, #fdfefe 0%, #f2f6fb 38%, #e8eef6 100%);
+    box-shadow:
+        0 10px 36px rgba(13, 27, 42, 0.18),
+        0 2px 10px rgba(27, 58, 95, 0.1),
+        inset 0 1px 0 rgba(255, 255, 255, 0.75);
+}
+
+.party-card--leadership:focus {
+    outline: none;
+}
+
+.party-card--leadership:focus-visible {
+    box-shadow:
+        0 0 0 3px var(--party-accent),
+        0 10px 36px rgba(13, 27, 42, 0.2),
+        0 2px 10px rgba(27, 58, 95, 0.12);
+}
+
+.party-card__visual {
+    position: relative;
+    aspect-ratio: 4 / 5;
+    overflow: hidden;
+    background: radial-gradient(ellipse 90% 70% at 50% 20%, #2a4a6f 0%, #0d1b2a 55%, #0a1522 100%);
+}
+
+.party-card__photo {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.45s ease;
+}
+
+.party-card--leadership:hover .party-card__photo,
+.party-card--leadership:focus-within .party-card__photo {
+    transform: scale(1.04);
+}
+
+.party-card__overlay {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 1.1rem 1.15rem 1.25rem;
+    background: linear-gradient(
+        to top,
+        rgba(13, 27, 42, 0.94) 0%,
+        rgba(13, 27, 42, 0.55) 45%,
+        transparent 100%
+    );
+    color: #fff;
+    opacity: 0;
+    transition: opacity 0.35s ease;
+    text-align: center;
+}
+
+.party-card--leadership:hover .party-card__overlay,
+.party-card--leadership:focus-within .party-card__overlay {
+    opacity: 1;
+}
+
+.party-card__role {
+    font-size: 0.78rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: #ffffff;
+    margin: 0 0 0.5rem;
+    line-height: 1.3;
+    text-shadow:
+        0 0 12px rgba(255, 255, 255, 0.45),
+        0 1px 4px rgba(0, 0, 0, 0.5);
+}
+
+.party-card__bio {
+    font-size: 0.95rem;
+    line-height: 1.5;
+    color: #ffffff;
+    margin: 0;
+    text-align: center;
+    text-shadow:
+        0 0 14px rgba(255, 255, 255, 0.4),
+        0 1px 5px rgba(0, 0, 0, 0.45);
+}
+
+.party-card--leadership .party-card__surname {
+    margin: 0;
+    padding: 1rem 1rem 1.2rem;
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: #2d4a6e;
+    text-align: center;
+    position: relative;
+    z-index: 1;
+    background:
+        linear-gradient(180deg, rgba(255, 255, 255, 0.55) 0%, transparent 100%),
+        linear-gradient(165deg, #f8fafd 0%, #eef3f9 45%, #e4ecf4 100%);
+    border: none;
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.9);
+}
+
+@media (hover: none) {
+    .party-card__overlay {
+        opacity: 1;
+        background: linear-gradient(
+            to top,
+            rgba(13, 27, 42, 0.9) 0%,
+            rgba(13, 27, 42, 0.4) 50%,
+            transparent 85%
+        );
+    }
+
+    .party-card__photo {
+        transform: none;
+    }
+}
+
+.party-section {
+    margin-bottom: 2.5rem;
+    width: 100%;
+    max-width: 52rem;
+}
+
+.party-section h2 {
+    font-size: 1.45rem;
+    color: var(--party-navy);
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid var(--party-accent);
+    text-align: center;
+}
+
+.party-prose {
+    background: var(--party-card);
+    padding: 1.75rem;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(13, 27, 42, 0.06);
+    border: none;
+    text-align: center;
+}
+
+.party-prose p {
+    margin-bottom: 1rem;
+    color: var(--party-text);
+}
+
+.party-prose ul {
+    margin: 0 auto 1rem;
+    color: var(--party-muted);
+    display: inline-block;
+    text-align: left;
+    max-width: 100%;
+}
+
+.party-prose li {
+    margin-bottom: 0.5rem;
+}
+
+.party-prose a {
+    color: var(--party-blue);
+    font-weight: 600;
+}
+
+.party-program-intro {
+    margin-bottom: 2rem;
+    width: 100%;
+    max-width: 52rem;
+}
+
+.party-program-intro p {
+    margin-bottom: 0;
+    font-size: 1.12rem;
+}
+
+.party-program-list {
+    list-style: none;
+}
+
+.party-program-list li {
+    background: var(--party-card);
+    margin-bottom: 1rem;
+    padding: 1.25rem 1.25rem 1.25rem 3.5rem;
+    border-radius: 10px;
+    border: none;
+    box-shadow: 0 2px 12px rgba(13, 27, 42, 0.06);
+    position: relative;
+}
+
+.party-program-list li::before {
+    content: counter(step);
+    counter-increment: step;
+    position: absolute;
+    left: 1rem;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 2rem;
+    height: 2rem;
+    background: var(--party-navy);
+    color: var(--party-gold-light);
+    border-radius: 50%;
+    display: grid;
+    place-items: center;
+    font-weight: 700;
+    font-size: 0.9rem;
+}
+
+.party-program-block {
+    counter-reset: step;
+}
+
+/* Полный текст программы */
+.party-program-doc {
+    max-width: 52rem;
+    width: 100%;
+}
+
+.party-program-doc-header {
+    text-align: center;
+    margin-bottom: 2.5rem;
+    padding-bottom: 1.5rem;
+    border-bottom: 2px solid var(--party-accent);
+}
+
+.party-program-kicker {
+    font-size: 0.92rem;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    color: var(--party-blue);
+    margin-bottom: 0.5rem;
+}
+
+.party-program-main-title {
+    text-align: center;
+    font-size: clamp(1.45rem, 3.6vw, 1.95rem);
+    line-height: 1.35;
+    margin-bottom: 0.5rem;
+}
+
+.party-program-edition {
+    color: var(--party-muted);
+    font-size: 1.02rem;
+}
+
+.party-program-chapter {
+    margin-bottom: 2.25rem;
+}
+
+.party-program-chapter > h2 {
+    font-size: 1.22rem;
+    color: var(--party-navy);
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid var(--party-accent);
+    line-height: 1.35;
+    text-align: center;
+}
+
+.party-program-chapter .party-prose {
+    margin-top: 0;
+}
+
+.party-program-chapter .party-prose p:last-child {
+    margin-bottom: 0;
+}
+
+.party-program-chapter h3 {
+    font-size: 1.06rem;
+    color: var(--party-blue);
+    margin: 1.25rem 0 0.65rem;
+    text-align: center;
+}
+
+.party-value-list,
+.party-doc-list {
+    list-style: none;
+    margin: 0 auto 1rem;
+    padding: 0;
+    max-width: 48rem;
+    text-align: left;
+}
+
+.party-value-list li,
+.party-doc-list li {
+    position: relative;
+    padding-left: 1.1rem;
+    margin-bottom: 0.75rem;
+    color: var(--party-text);
+}
+
+.party-value-list li::before,
+.party-doc-list li::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0.55em;
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background: var(--party-accent);
+}
+
+.party-program-chapter .party-prose .party-value-list,
+.party-program-chapter .party-prose .party-doc-list {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.party-doc-list li strong {
+    color: var(--party-navy);
+}
+
+.party-form {
+    background: var(--party-card);
+    padding: 2rem;
+    border-radius: 12px;
+    box-shadow: 0 4px 24px rgba(13, 27, 42, 0.1);
+    border: none;
+    max-width: 520px;
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: left;
+}
+
+.party-form label {
+    display: block;
+    font-weight: 600;
+    font-size: 0.95rem;
+    color: var(--party-navy);
+    margin-bottom: 0.35rem;
+}
+
+.party-form input,
+.party-form select,
+.party-form textarea {
+    width: 100%;
+    padding: 0.65rem 0.85rem;
+    margin-bottom: 1.1rem;
+    border: 1px solid #cfd4dc;
+    border-radius: 8px;
+    font: inherit;
+}
+
+.party-form input:focus,
+.party-form select:focus,
+.party-form textarea:focus {
+    outline: none;
+    border-color: var(--party-blue);
+    box-shadow: 0 0 0 3px rgba(27, 58, 95, 0.15);
+}
+
+.party-form button {
+    width: 100%;
+    padding: 0.85rem 1.25rem;
+    border: none;
+    border-radius: 8px;
+    font-weight: 700;
+    font-size: 1rem;
+    cursor: pointer;
+    background: linear-gradient(135deg, var(--party-blue), var(--party-navy));
+    color: #f5f9ff;
+    text-shadow: 0 0 18px rgba(255, 255, 255, 0.35);
+    transition:
+        transform 0.32s cubic-bezier(0.34, 1.45, 0.64, 1),
+        box-shadow 0.32s ease,
+        filter 0.28s ease;
+}
+
+.party-form button:hover {
+    transform: translateY(-5px) scale(1.02);
+    box-shadow: 0 14px 32px rgba(13, 27, 42, 0.42);
+    filter: brightness(1.1);
+}
+
+.party-form button:active {
+    transform: translateY(-2px) scale(0.99);
+    box-shadow: 0 6px 16px rgba(13, 27, 42, 0.35);
+    transition-duration: 0.12s;
+}
+
+.party-note {
+    font-size: 0.92rem;
+    color: var(--party-muted);
+    margin-top: 1rem;
+}
+
+/* Запись на приём: инструкция и ссылка на Google-форму */
+.party-zapis-section {
+    max-width: 40rem;
+}
+
+.party-zapis-instructions .party-zapis-steps {
+    list-style: decimal;
+    margin: 0 auto 1.5rem;
+    padding-left: 1.35rem;
+    text-align: left;
+    max-width: 100%;
+    display: block;
+    color: var(--party-text);
+}
+
+.party-zapis-steps li {
+    margin-bottom: 0.85rem;
+    padding-left: 0.35rem;
+}
+
+.party-zapis-steps li:last-child {
+    margin-bottom: 0;
+}
+
+.party-zapis-cta-wrap {
+    text-align: center;
+    margin: 1.5rem 0 0;
+}
+
+.party-zapis-google {
+    display: inline-block;
+    padding: 0.95rem 1.75rem;
+    border-radius: 10px;
+    font-weight: 700;
+    font-size: 1.05rem;
+    text-decoration: none;
+    color: #f5f9ff;
+    text-shadow: 0 0 20px rgba(255, 255, 255, 0.4);
+    background: linear-gradient(135deg, var(--party-blue), var(--party-navy));
+    box-shadow: 0 6px 22px rgba(13, 27, 42, 0.28);
+    transition:
+        transform 0.32s cubic-bezier(0.34, 1.45, 0.64, 1),
+        box-shadow 0.32s ease,
+        filter 0.28s ease;
+}
+
+.party-zapis-google:hover {
+    transform: translateY(-4px) scale(1.02);
+    box-shadow: 0 12px 32px rgba(13, 27, 42, 0.38);
+    filter: brightness(1.08);
+}
+
+.party-zapis-google:active {
+    transform: translateY(-1px) scale(0.99);
+    transition-duration: 0.12s;
+}
+
+.party-zapis-note {
+    margin-top: 1.25rem;
+    margin-bottom: 0;
+    text-align: center;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .party-brand,
+    .party-brand:hover,
+    .party-brand:active,
+    .party-tabs a,
+    .party-tabs a:hover,
+    .party-tabs a:active,
+    .party-form button,
+    .party-form button:hover,
+    .party-form button:active,
+    .party-zapis-google,
+    .party-zapis-google:hover,
+    .party-zapis-google:active {
+        transition-duration: 0.01ms !important;
+        transition-timing-function: linear !important;
+    }
+
+    .party-brand:hover,
+    .party-brand:active,
+    .party-tabs a:hover,
+    .party-tabs a:active,
+    .party-form button:hover,
+    .party-form button:active,
+    .party-zapis-google:hover,
+    .party-zapis-google:active {
+        transform: none !important;
+        filter: none !important;
+    }
+
+    .party-tabs a.is-active:hover {
+        filter: none !important;
+    }
+}
+
+@media (max-width: 768px) {
+    body {
+        background-attachment: scroll;
+    }
+}
+
+@media (max-width: 600px) {
+    .party-tabs a {
+        min-width: calc(50% - 0.25rem);
+    }
+}
